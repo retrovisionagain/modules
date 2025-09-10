@@ -1,0 +1,14 @@
+bin/
+*.exe
+*.test
+vendor/
+go.sum
+*.mod.tmp
+
+.idea/
+.vscode/
+*.swp
+
+.DS_Store
+
+*.log
