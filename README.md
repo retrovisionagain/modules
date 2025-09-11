@@ -3,6 +3,7 @@
 <div align="center">
   <h1>Smart Gopher</h1>
 </div>
-
-# STILL IN DEVELOPMENT
-## VERSION: 0.1(too little to be of any significance)
+<div>
+  <h2>STILL IN DEVELOPMENT</h2>
+  <h3>VERSION: 0.1(too little to be of any significance)</h3>
+</div>
