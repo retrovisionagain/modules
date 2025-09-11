@@ -5,5 +5,4 @@
 </div>
 
 # STILL IN DEVELOPMENT
-
-# VERSION: 0.1(too little to be of any significance)
+## VERSION: 0.1(too little to be of any significance)
