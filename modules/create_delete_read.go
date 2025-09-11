@@ -8,7 +8,6 @@ import (
 	"os"
 )
 
-// TODO: переписать все функции из read_check и из этого файла,а также из time так,чтобы функции принимали на вход только название файла и по возможности доп. параметры
 func Create(name string) string {
 	file, err := os.Create(name)
 
