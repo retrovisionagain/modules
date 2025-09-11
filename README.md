@@ -1,4 +1,4 @@
-[](photos/smartgopher.png)
+[](https://github.com/retrovisionagain/smartgopher/blob/main/photos/smartgopher.png)
 
 <div align="center">
   <h1>Smart Gopher</h1>
