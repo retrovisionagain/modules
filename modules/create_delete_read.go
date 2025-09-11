@@ -9,44 +9,40 @@ import (
 )
 
 // TODO: переписать все функции из read_check и из этого файла,а также из time так,чтобы функции принимали на вход только название файла и по возможности доп. параметры
-func Create() string {
-	var name string
-
-	fmt.Print("Print name of file u wanna to create or write(to stop print \"stop\"): ")
-	fmt.Scan(&name)
-
+func Create(name string) string {
 	file, err := os.Create(name)
 
 	if err != nil {
 		log.Fatal(err)
-	} else if errors.Is(err, os.ErrNotExist) {
-		fmt.Println("File does not exist. Creating new file.")
 	}
-	fmt.Print("File was created: ")
+
 	defer file.Close()
+	fmt.Println("File does not exist. Creating new file:", name)
 	return name
 }
 
-func Delete() {
-	var name string
+func Read(name string) string {
+	data, err := os.ReadFile(name)
 
-	fmt.Print("Print name of file u wanna to delete(to stop print \"stop\"): ")
-	fmt.Scan(&name)
-
-	if name == "stop" {
-		fmt.Println("Goodbye!")
+	if err != nil {
+		log.Fatal(err)
 	}
+	fmt.Printf("File %s: \n", name)
+	fmt.Println(string(data))
 
+	return name
+}
+
+func Delete(name string) string {
 	err := os.Remove(name)
 
 	if errors.Is(err, os.ErrNotExist) {
 		fmt.Println("File does not exist:", name)
-	}
-	if err != nil {
-		log.Fatal(err)
+	} else {
+		fmt.Println("File deleted:", name)
 	}
 
-	fmt.Println("File deleted:", name)
+	return name
 }
 
 func Write() string {
@@ -65,19 +61,27 @@ func Write() string {
 	_, err := os.Stat(name)
 
 	if errors.Is(err, os.ErrNotExist) {
-		fmt.Println("File does not exist. Creating new file.")
+		fmt.Println("File does not exist:", name)
 	}
 
 	fmt.Print("Now edit this file: ")
 	scanner.Scan()
 	text := scanner.Text()
 
-	err = os.WriteFile(name, []byte(text), 0644)
+	file, err := os.OpenFile(name, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
-		log.Printf("Failed to write file %s: %v", name, err)
+		log.Printf("Failed to open file: %v", err)
 		return ""
 	}
 
-	fmt.Print("Done writing: ")
+	_, err = file.WriteString(text + "\n")
+
+	if err != nil {
+		log.Printf("Failed to write to file: %v", err)
+		return ""
+	}
+
+	defer file.Close()
+	fmt.Println("Done writing:", name)
 	return name
 }
