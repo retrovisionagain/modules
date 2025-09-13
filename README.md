@@ -3,5 +3,5 @@
 </div>
 <div>
   <h2>STILL IN DEVELOPMENT</h2>
-  <h3>VERSION: 0.2(too little to be of any significance)</h3>
+  <h3>VERSION: 0.2.5(too little to be of any significance)</h3>
 </div>
