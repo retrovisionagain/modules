@@ -8,40 +8,40 @@ import (
 	"path/filepath"
 )
 
-func Create(name string) string {
-	file, err := os.Create(name)
+func Create(filename string) string {
+	file, err := os.Create(filename)
 
 	if err != nil {
 		log.Println("Cant create file:", err)
 	}
 
 	defer file.Close()
-	fmt.Println("File does not exist. Creating new file:", name)
-	return name
+	fmt.Println("File does not exist. Creating new file:", filename)
+	return filename
 }
 
-func Read(name string) string {
-	data, err := os.ReadFile(name)
+func Read(filename string) string {
+	data, err := os.ReadFile(filename)
 
 	if err != nil {
 		log.Println("Cant read file:", err)
 	}
-	fmt.Printf("File %s: \n", name)
-	fmt.Println(string(data))
 
-	return name
+	fmt.Printf("File %s: \n", filename)
+	fmt.Println(string(data))
+	return filename
 }
 
-func Delete(name string) string {
-	err := os.Remove(name)
+func Delete(filename string) string {
+	err := os.Remove(filename)
 
 	if errors.Is(err, os.ErrNotExist) {
-		fmt.Println("File does not exist:", name)
+		fmt.Println("File does not exist:", filename)
 	} else {
-		fmt.Println("File deleted:", name)
+		fmt.Println("File deleted:", filename)
 	}
 
-	return name
+	return filename
 }
 
 func Write(filename, text string) error {
