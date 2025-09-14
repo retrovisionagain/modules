@@ -1,7 +1,3 @@
 <div align="center">
-  <h1>Smart Gopher</h1>
-</div>
-<div>
-  <h2>STILL IN DEVELOPMENT</h2>
-  <h3>VERSION: 0.2.5(too little to be of any significance)</h3>
+  <h1>Modules for management with files,directories and time</h1>
 </div>
